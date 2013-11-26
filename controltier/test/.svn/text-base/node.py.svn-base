@@ -1,0 +1,10 @@
+import sys
+
+sys.path.insert(0, "../")
+
+from node import Node
+
+n = Node("java_test")
+
+#n.create()
+print n.analysis()

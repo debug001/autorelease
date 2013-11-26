@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/viprelease/!svn/ver/1332/autorelease/workflow
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/947/autorelease/workflow/admin.py
+END
+workflow.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/viprelease/!svn/ver/1322/autorelease/workflow/workflow.py
+END
+approve.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/1491/autorelease/workflow/approve.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/388/autorelease/workflow/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/viprelease/!svn/ver/954/autorelease/workflow/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/846/autorelease/workflow/urls.py
+END

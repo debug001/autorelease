@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+
+{% block body %}
+
+
+{% include "task_left.html" %}
+
+
+    <div class="span10">
+    <div class="container-fluid">
+    <fieldset>
+        <legend>{{ page.project }}历史记录</legend>
+    </fieldset>
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>上线单ID</th>
+        <th>代码分类</th>
+        <th>项目名称</th>
+        <th>灰度发布</th>
+        <th>版本号</th>
+        <th>状态</th>
+        <th>创建人</th>
+        <th width="80">发布时间</th>
+        <th>部署人</th>
+        <th width="80">完成时间</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for key,value in data.iteritems %}
+        <tr>
+            <td>{{ value.id }}</td>
+            <td>{{ value.task_id }}</td>
+            <td>{{ value.type }}</td>
+            <td>{{ value.project }}</td>
+            <td>{{ value.env }}</td>
+            <td>{{ value.version }}</td>
+            <td>{{ value.status_str }}</td>
+            <td>{{ value.create_user }}</td>
+            <td>{{ value.deploy_time }}</td>
+            <td>{{ value.deploy_user }}</td>
+            <td>{{ value.finish_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    </div>
+
+    <div class="pagination pagination-right">
+        <ul>
+            <li><a href="/task/history/{{ page.project }}/{{ page.last }}/"><<</a></li>
+            {% for k, v in page_list.iteritems %}
+                <li class="{{ v }}"><a href="/task/history/{{ page.project }}/{{ k }}/">{{ k }}</a></li>
+            {% endfor %}
+            <li><a href="/task/history/{{ page.project }}/{{ page.next }}/">>></a></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

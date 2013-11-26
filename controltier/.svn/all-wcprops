@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/viprelease/!svn/ver/1352/autorelease/controltier
+END
+base.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/389/autorelease/controltier/base.py
+END
+job.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/viprelease/!svn/ver/389/autorelease/controltier/job.py
+END
+script.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/viprelease/!svn/ver/389/autorelease/controltier/script.txt
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/viprelease/!svn/ver/389/autorelease/controltier/__init__.py
+END
+log.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/1352/autorelease/controltier/log.py
+END
+node.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/962/autorelease/controltier/node.py
+END

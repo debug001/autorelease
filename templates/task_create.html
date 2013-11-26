@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+
+{% block body %}
+
+
+{% include "task_left.html" %}
+
+
+    <div class="span10">
+        <div class="container-fluid">
+            <form class="form-horizontal well" action="do/" method="post">
+                <fieldset>
+                    <legend>发布代码更新</legend>
+                    <div class="row">
+                        <div class="span6">
+
+                            {% if config.err != '' %}
+                            <div class="bs-docs-example">
+                                <div class="alert fade in">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>ERROR: </strong>{{ config.err }}
+                                </div>
+                            </div>
+                            {% endif %}
+
+
+                            <div class="control-group">
+                                <label class="control-label">选择类型</label>
+
+                                <div class="controls docs-input-sizes">
+
+                                    <select name="type" id="task_type">
+                                        <option value="">请选择</option>
+                                        <option value="JAVA">JAVA</option>
+                                        <option value="PHP">PHP</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">项目名</label>
+                                <div class="controls docs-input-sizes">
+                                    <select name="project" id="task_project_sl">
+                                        <div id="task_project"></div>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <div class="control-group">
+                                <label class="control-label">指定版本号</label>
+                                <div class="controls docs-input-sizes">
+                                    <input type="text" name="version" value="" placeholder=""/>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">上线目的</label>
+                                <div class="controls docs-input-sizes">
+                                    <textarea rows="4" cols="30" name="comment">{{  data.comment }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">创建任务</button>
+                        <button type="button" class="btn btn-dark back">取消</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+
+{% endblock %}
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

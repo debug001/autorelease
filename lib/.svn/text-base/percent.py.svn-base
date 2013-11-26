@@ -1,0 +1,118 @@
+from __future__ import division
+#encoding=utf-8
+__author__ = 'jophyyao'
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
+import time, os
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'autorelease.settings'
+os.environ['LD_LIBRARY_PATH'] = '/usr/local/dev/python/lib'
+sys.path.append('/data/python/web/autorelease')
+from tools.mongo import Mongo
+from task.models import History
+
+
+def percent_string(percent):
+    try:
+        int(percent)
+    except:
+        return percent
+    else:
+        return "%s%%" % percent
+
+
+
+class Percent(object):
+    Root = '/usr/local/ctier/ctl/var/logs/ctlcenter'
+
+
+    def __init__(self, id, project, group, env):
+        self.mongo_conn = Mongo(
+            host = '127.0.0.1',
+            database = 'release',
+            table = 'percent',
+        )
+        self.id = id
+        self.project = project
+        self.group = group
+        self.env = env
+        self.env_str = percent_string(env)
+
+    def analyze(self):
+        #print self.id, self.project, self.env
+        try:
+            last_runid = int(History.objects.filter(task_id = self.id, project=self.project, env=self.env, status=102).order_by('-finish_time')[0].run_id)
+        except:
+            last_runid = 0
+
+        if last_runid == 0:
+            last_count = 100
+        else:
+            last_count = os.popen("wc -l %s/%s/%s/%s/%d.txt" % (
+                self.Root, self.project, self.group, self.env_str, last_runid
+                )).read().split()[0]
+
+
+        current_file = os.popen("ls -rt %s/%s/%s/%s |tail -n 1" % (
+            self.Root, self.project, self.group, self.env_str
+        )).read()
+
+
+        try:
+            current_count = os.popen("wc -l %s/%s/%s/%s/%s" % (
+                self.Root, self.project, self.group, self.env_str, current_file
+            )).read().split()[0]
+        except IndexError, e:
+            current_count = 0
+
+        percent = int(round((int(current_count)/int(last_count)*100)))
+
+        status_result = self.mongo_conn.find(
+            task_id = int(self.id)
+        )
+
+
+        print "status_result"
+        print status_result
+        for i in status_result:
+            print i['status']
+            if i['status'] == 'success':
+                percent = 100
+
+
+        self.update(percent)
+
+
+
+    def update(self, percent):
+        count = self.mongo_conn.find_count(task_id=self.id)
+        if int(count) > 0:
+            if int(percent) >= 100:              # jophy status success define
+                status = 'success'
+            else:
+                status = 'running'
+
+            self.mongo_conn.update(
+                condition={'task_id':self.id},
+                data={
+                    'percent' : percent,
+                    'status' : status
+                }
+            )
+        else:
+            self.mongo_conn.insert(
+                task_id = self.id,
+                percent = percent,
+                status = 'success',
+            )
+        return 0
+
+
+
+
+
+

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+    <script>
+        $(document).ready(function(){
+            {% for row in percent_id_list %}
+                setInterval(function() {
+                $("#list_percent_{{ row }}").load("/ajax/get_percent/list/{{ row }}/","");
+            }, 1000);
+            {% endfor %}
+        });
+    </script>
+
+
+
+    <div class="span10">
+    <div class="container-fluid">
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th width="40">ID</th>
+        <th>发布选择</th>
+        <th width="150">项目名称</th>
+        <th width="80">灰度发布</th>
+        <th>创建人</th>
+        <th width="100">创建时间</th>
+        <th width="100">状态</th>
+        <th>发布人</th>
+        <th width="100">发布时间</th>
+        <th width="100">完成时间</th>
+        <th width="200">发布进度</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for key,value in data.iteritems %}
+            <tr>
+
+            <td id="list_id_{{ value.id }}">{{ value.id }}</td>
+
+            <td width="90" nowrap="nowrap">
+                <div class="btn-group dropdown">
+                    <a class="btn" href="/task/view/{{ value.id }}">
+                        查看
+                    </a>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right" style="width: 50px;">
+
+                        {% if value.approve == 1 and value.status < 100 %}
+                                <li>
+                                    <a href="/task/approve/{{ value.id }}/0/" title="审批通过"><i
+                                        class="icon-play"></i>审批通过</a>
+                                </li>
+                                <li>
+                                    <a href="/task/approve/{{ value.id }}/1/" title="审批退回"><i
+                                        class="icon-play"></i>审批退回</a>
+                                </li>
+                        {% endif %}
+
+                        {% if value.deploy_approve == 1 %}
+                            {% for k,v in value.percent.iteritems %}
+                                {% if "%" not in v %}
+                                <li>
+                                    <a href="/task/push/{{ value.id }}/{{ k }}/" title="推送"><i
+                                            class="icon-play"></i> 推送 <span class="label label-info">{{ v }}</span></a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+
+
+                            {% for k,v in value.percent.iteritems %}
+                                {% if "%" in v %}
+                                    <li>
+                                        <a href="/task/push/{{ value.id }}/{{ k }}/" title="推送"><i
+                                                class="icon-play"></i> 推送 <span class="label label-info">{{ v }}</span></a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+
+                            <li>
+                                <a href="/task/rollback/{{ value.id }}/" title="回退"><i
+                                        class="icon-play"></i> 回退 </span></a>
+                            </li>
+                        {% endif %}
+
+
+                        <li>
+                            <a href="/task/view/{{ value.id }}/" title="查看"><i class="icon-play"></i> 查看</a>
+                            <a href="/task/history/{{ value.project }}/1/" title="历史记录"><i class="icon-play"></i> 历史记录</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+
+            <td>
+                {{ value.project }}
+            </td>
+
+            <td class="break">
+                {% if value.env %}
+                <span class="label label-info" style="margin-right:5px;">
+                        {{ value.env }}
+                </span>
+                {% endif %}
+            </td>
+
+            <td>{{ value.create_user }}</td>
+
+            <td>
+                {% if value.create_time %}
+                    {{ value.create_time }}
+                {% endif %}
+            </td>
+
+            <td><span class="{{ value.status_color }}">{{ value.status_str }}</span></td>
+
+
+            <td>{{ value.deploy_user }}</td>
+
+            <td>
+                {% if value.deploy_time %}
+                    {{ value.deploy_time }}
+                {% endif %}
+            </td>
+
+            <td>
+                {% if value.finish_time %}
+                    {{ value.finish_time }}
+                {% endif %}
+            </td>
+
+            <td id="list_percent_{{ value.id }}">
+
+            </td>
+
+            </tr>
+        {% endfor %}
+
+
+
+    </table>
+    </div>
+    </div>
+
+    <div class="pagination pagination-right">
+        <ul>
+            <li><a href="/task/list/{{ last }}/"><<</a></li>
+            {% for k, v in page_list.iteritems %}
+                <li class="{{ v }}"><a href="/task/list/{{ k }}/">{{ k }}</a></li>
+            {% endfor %}
+            <li><a href="/task/list/{{ next }}/">>></a></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/viprelease/!svn/ver/1303/autorelease/public/js
+END
+line.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/543/autorelease/public/js/line.js
+END
+workflow.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/viprelease/!svn/ver/1303/autorelease/public/js/workflow.js
+END
+group.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/viprelease/!svn/ver/709/autorelease/public/js/group.js
+END
+bootstrap.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/viprelease/!svn/ver/389/autorelease/public/js/bootstrap.js
+END
+bootstrap.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/viprelease/!svn/ver/389/autorelease/public/js/bootstrap.min.js
+END
+jquery.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/viprelease/!svn/ver/389/autorelease/public/js/jquery.min.js
+END
+django.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/389/autorelease/public/js/django.js
+END
+task.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/389/autorelease/public/js/task.js
+END

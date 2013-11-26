@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+    <script>
+        $(document).ready(function(){
+            setInterval(function() {
+                $("#result").load("/log/load/{{ data.id }}","");
+            }, 2000);
+
+            setInterval(function() {
+                $("#view_percent_{{ data.id }}").load("/ajax/get_percent/list/{{ data.id }}/","");
+            }, 2000);
+        });
+    </script>
+
+
+
+    <div class="span10">
+    <div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="span12">
+            <div class="container-fluid">
+                <div class="row">
+                    <table class="table">
+                        <h3>发布信息</h3>
+                        <tr>
+                            <td>ID</td>
+                            <td>{{ data.id }}</td>
+                            <td>代码类型</td>
+                            <td>{{ data.type }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>灰度发布</td>
+                            <td>
+                                {% if data.env %}
+                                    <span class="label label-info" style="margin-right:5px;">
+                                    {{ data.env }}
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                            <td>版本号</td>
+                            <td>{{ data.version }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>创建人</td>
+                            <td>{{ data.create_user }}</td>
+                            <td>创建时间</td>
+                            <td>{{ data.create_time }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>发布人</td>
+                            <td>{{ data.deploy_user }}</td>
+                            <td>发布时间</td>
+                            <td>
+                                {% if data.deploy_time %}
+                                    {{ data.deploy_time }}
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>完成时间</td>
+                            <td>
+                                {% if data.finish_time %}
+                                    {{ data.finish_time }}
+                                {% endif %}
+                            </td>
+
+                            <td>上线目的</td>
+                            <td width="400">
+                              {% autoescape off %}
+                                {% if data.comment %}
+                                    {{ data.comment }}
+                                {% endif %}
+                              {% endautoescape %}
+                            </td>
+                        </tr>
+
+                        <!-- percent -->
+                        <tr>
+                            <td>进度</td>
+                            <td id="view_percent_{{ data.id }}">
+
+                            </td>
+                        </tr>
+
+
+
+                    <table class="table">
+                        {% if approve %}
+                            <h3>审批信息</h3>
+                        {% endif %}
+                        {% for k,v in approve.iteritems %}
+                            {{ row }}
+                          {% if v.operation %}
+                            <tr class="error">
+                          {% else %}
+                            <tr class="success">
+                          {% endif %}
+                                <td>{{ v.approve_name }}审批</td>
+                                <td>{{ v.approve_user }}</td>
+                                <td>审批时间</td>
+                                <td>{{ v.approve_time }}</td>
+                                {% if v.operation %}
+                                    <td>操作</td>
+                                    <td>{{ v.operation }}</td>
+                                {% endif %}
+                            </tr>
+
+                        {% endfor %}
+
+
+                    </table>
+                </div>
+                <div class="row">
+                    <pre class="" id="result" style="height: 500px; overflow: auto;">
+waiting logs ......
+                    </pre>
+                </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

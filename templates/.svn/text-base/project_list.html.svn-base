@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+
+<div class="span10">
+    <div class="container-fluid">
+        <form class="form-horizontal well" action="" method="post">
+            <fieldset>
+                <legend>项目列表</legend>
+                {% autoescape off %}
+                    <div class="bs-docs-example" style="background-color: #f5f5f5;">
+                        <input type="text" name="project" class="span3" style="margin: 0 auto;" data-provide="typeahead"
+                               data-items="4"
+                               data-source='{{ data.project }}'/>
+                        <input type="submit" class="btn btn-primary" value="查询"/>
+                    </div>
+                {% endautoescape %}
+
+            </fieldset>
+        </form>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>项目名</th>
+                <th>IP</th>
+                <th>主机名</th>
+                <th>灰度发布</th>
+                <th>发布用户</th>
+                <th>系统名称</th>
+                <th>系统版本</th>
+                <th>更新时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for k, v in data.iteritems %}
+            <tr>
+                {% for row in v %}
+                    {% if row.project %}
+                <td>{{ row.project }}</td>
+                <td>{{ row.hostname }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.tags }}</td>
+                <td>{{ row.ctlusername }}</td>
+                <td>{{ row.osname }}</td>
+                <td>{{ row.osversion }}</td>
+                <td>{{ row.updatetime }}</td>
+                    {% endif %}
+            </tr>
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block foot %}{{ config.company }}{% endblock %}

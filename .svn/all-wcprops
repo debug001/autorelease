@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/viprelease/!svn/ver/1422/autorelease
+END
+manage.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/viprelease/!svn/ver/389/autorelease/manage.py
+END
+wsgi.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/viprelease/!svn/ver/387/autorelease/wsgi.py
+END
+django.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/viprelease/!svn/ver/1043/autorelease/django.xml
+END
+run_prd.sh
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/viprelease/!svn/ver/1456/autorelease/run_prd.sh
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/viprelease/!svn/ver/389/autorelease/readme.txt
+END

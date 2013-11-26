@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/viprelease/!svn/ver/1353/autorelease/user
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/viprelease/!svn/ver/1486/autorelease/user/admin.py
+END
+login.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/viprelease/!svn/ver/1487/autorelease/user/login.py
+END
+manage.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/viprelease/!svn/ver/1162/autorelease/user/manage.py
+END
+group.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/935/autorelease/user/group.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/389/autorelease/user/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/viprelease/!svn/ver/1485/autorelease/user/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/viprelease/!svn/ver/616/autorelease/user/urls.py
+END

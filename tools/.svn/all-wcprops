@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/viprelease/!svn/ver/1399/autorelease/tools
+END
+xmlparse.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/389/autorelease/tools/xmlparse.py
+END
+sendmail.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/viprelease/!svn/ver/1399/autorelease/tools/sendmail.py
+END
+webservice.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/1143/autorelease/tools/webservice.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/389/autorelease/tools/__init__.py
+END
+mongo.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/viprelease/!svn/ver/389/autorelease/tools/mongo.py
+END
+daemon.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1116/autorelease/tools/daemon.py
+END
+mysql.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/viprelease/!svn/ver/389/autorelease/tools/mysql.py
+END

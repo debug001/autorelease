@@ -1,0 +1,8 @@
+<uwsgi>
+    <socket>10.20.101.61:9001</socket>
+    <workers>10</workers>
+    <max-requests>10000</max-requests>
+    <chdir>/data/python/web/autorelease</chdir>
+    <pythonpath>.</pythonpath>
+    <module>wsgi</module>
+</uwsgi>

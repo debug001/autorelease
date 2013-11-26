@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/viprelease/!svn/ver/1422/autorelease/mail
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/942/autorelease/mail/__init__.py
+END
+release.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1422/autorelease/mail/release.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/viprelease/!svn/ver/942/autorelease/mail/urls.py
+END

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/viprelease/!svn/ver/1422/autorelease/task
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/viprelease/!svn/ver/1349/autorelease/task/admin.py
+END
+rollback.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/1041/autorelease/task/rollback.py
+END
+validation.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/1361/autorelease/task/validation.py
+END
+view.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1099/autorelease/task/view.py
+END
+list.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1488/autorelease/task/list.py
+END
+approve.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1035/autorelease/task/approve.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/389/autorelease/task/__init__.py
+END
+push.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1455/autorelease/task/push.py
+END
+percent.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1422/autorelease/task/percent.py
+END
+history.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1207/autorelease/task/history.py
+END
+task.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1294/autorelease/task/task.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/viprelease/!svn/ver/1349/autorelease/task/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1422/autorelease/task/urls.py
+END

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+    <div class="span10">
+    <div class="container-fluid">
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th width="40">ID</th>
+        <th>用户名</th>
+        <th>EMAIL</th>
+        <th>上次登录</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for row in data %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.user }}</td>
+                <td>{{ row.email }}</td>
+                <td>{{ row.last_login_time }}</td>
+            </tr>
+        {% endfor %}
+
+
+
+    </table>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

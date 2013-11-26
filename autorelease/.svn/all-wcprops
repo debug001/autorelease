@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/viprelease/!svn/ver/1213/autorelease/autorelease
+END
+wsgi.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/389/autorelease/autorelease/wsgi.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/viprelease/!svn/ver/389/autorelease/autorelease/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/viprelease/!svn/ver/1443/autorelease/autorelease/settings.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/942/autorelease/autorelease/urls.py
+END

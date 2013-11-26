@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/viprelease/!svn/ver/1383/autorelease/project
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/610/autorelease/project/admin.py
+END
+list.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1383/autorelease/project/list.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/389/autorelease/project/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/viprelease/!svn/ver/389/autorelease/project/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/viprelease/!svn/ver/389/autorelease/project/urls.py
+END

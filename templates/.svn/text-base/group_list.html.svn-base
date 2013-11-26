@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+{% block javascript %}<script src="/js/{{ js }}" type="text/javascript"></script>{% endblock %}
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+<div class="span10">
+        <div class="container-fluid">
+            <fieldset>
+                <legend>组成员修改</legend>
+            </fieldset>
+        <form method="post" action="">
+            <table>
+            <tr>
+                <td>
+                            <div class="control-group">
+                                <label class="control-label">组名</label>
+                                <div class="controls docs-input-sizes">
+                                    <select id="groupid" name="group" multiple="multiple" size="10">
+                                        {% for name, id in data.group.iteritems %}
+                                            {% if id == '1' %}
+                                                <option value="{{ id }}" selected="selected">{{ name }}</option>
+                                            {% else %}
+                                                <option value="{{ id }}">{{ name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                </td>
+
+                <td width="50">
+
+                </td>
+
+                <td>
+                            <div class="control-group">
+                                <label class="control-label">当前用户</label>
+                                <div class="controls docs-input-sizes">
+                                    <select id="current_user" name="user[]" multiple="multiple" size="10">
+
+                                    </select>
+                                </div>
+                            </div>
+                </td>
+
+
+                <td width="50" align="center">
+                    <button class="btn btn-small" type="button" id="add"><<</button>
+                </td>
+
+                <td>
+                    <div class="control-group">
+                        <label class="control-label">用户列表</label>
+                        <div class="controls docs-input-sizes">
+                            <select id="user_list" name="user[]" multiple="multiple" size="10">
+                                {% for name, id in data.user.iteritems %}
+                                    <option value="{{ name }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </td>
+
+
+
+                <tr/>
+            <tr>
+                <td><button type="submit" class="btn btn-primary">保存</button></td>
+            <tr/>
+            </table>
+        </form>
+
+
+
+
+    <div class="container-fluid">
+        <fieldset>
+            <legend>组成员列表</legend>
+        </fieldset>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th width="50">ID</th>
+                <th>组名称</th>
+                <th>成员</th>
+            </tr>
+            </thead>
+
+            {% for k, v in group_list.iteritems %}
+
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ v.name }}</td>
+                    {% autoescape off %}
+                        <td>{{ v.userid }}</td>
+                    {% endautoescape %}
+                </tr>
+            {% endfor %}
+
+
+
+        </table>
+    </div>
+
+
+        </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}

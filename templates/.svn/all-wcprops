@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/viprelease/!svn/ver/1415/autorelease/templates
+END
+task_left.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/viprelease/!svn/ver/616/autorelease/templates/task_left.html
+END
+task_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/viprelease/!svn/ver/1505/autorelease/templates/task_view.html
+END
+task_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/viprelease/!svn/ver/1484/autorelease/templates/task_list.html
+END
+project_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/viprelease/!svn/ver/389/autorelease/templates/project_list.html
+END
+sys_workflow_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/viprelease/!svn/ver/1326/autorelease/templates/sys_workflow_view.html
+END
+task_history.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/viprelease/!svn/ver/1208/autorelease/templates/task_history.html
+END
+workflow_error.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/viprelease/!svn/ver/1490/autorelease/templates/workflow_error.html
+END
+task_create.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/viprelease/!svn/ver/389/autorelease/templates/task_create.html
+END
+workflow_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/viprelease/!svn/ver/1309/autorelease/templates/workflow_list.html
+END
+group_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/viprelease/!svn/ver/880/autorelease/templates/group_list.html
+END
+user_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/viprelease/!svn/ver/389/autorelease/templates/user_list.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/1263/autorelease/templates/base.html
+END
+log_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/viprelease/!svn/ver/389/autorelease/templates/log_view.html
+END

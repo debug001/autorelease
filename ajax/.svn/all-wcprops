@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/viprelease/!svn/ver/1316/autorelease/ajax
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/389/autorelease/ajax/__init__.py
+END
+get_current_user.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/viprelease/!svn/ver/1316/autorelease/ajax/get_current_user.py
+END
+get_percent.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/1293/autorelease/ajax/get_percent.py
+END
+get_project.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/389/autorelease/ajax/get_project.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/viprelease/!svn/ver/1301/autorelease/ajax/urls.py
+END

@@ -1,0 +1,144 @@
+
+
+            /* Base class */
+.jophy-bs-docs-example {
+    position: relative;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    *padding-top: 19px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* Echo out a label for the example */
+.jophy-bs-docs-example:after {
+    content: "Example";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #9da0a4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+
+/* Remove spacing between an example and it's code */
+.jophy-bs-docs-example + .prettyprint {
+    margin-top: -20px;
+    padding-top: 15px;
+}
+
+/* Tweak examples
+------------------------- */
+.jophy-bs-docs-example > p:last-child {
+    margin-bottom: 0;
+}
+.jophy-bs-docs-example .table,
+.jophy-bs-docs-example .progress,
+.jophy-bs-docs-example .well,
+.jophy-bs-docs-example .alert,
+.jophy-bs-docs-example .hero-unit,
+.jophy-bs-docs-example .pagination,
+.jophy-bs-docs-example .navbar,
+.jophy-bs-docs-example > .nav,
+.jophy-bs-docs-example blockquote {
+    margin-bottom: 5px;
+}
+.jophy-bs-docs-example .pagination {
+    margin-top: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+    z-index: 1;
+    padding: 0;
+    height: 90px;
+    overflow: hidden; /* cut the drop shadows off */
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+    margin-left: 0;
+    margin-right: 0;
+}
+.bs-navbar-top-example {
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+.bs-navbar-top-example:after {
+    top: auto;
+    bottom: -1px;
+    -webkit-border-radius: 0 4px 0 4px;
+    -moz-border-radius: 0 4px 0 4px;
+    border-radius: 0 4px 0 4px;
+}
+.bs-navbar-bottom-example {
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+}
+.bs-navbar-bottom-example .navbar {
+    margin-bottom: 0;
+}
+form.jophy-bs-docs-example {
+    padding-bottom: 19px;
+}
+
+/* Images */
+.jophy-bs-docs-example-images img {
+    margin: 10px;
+    display: inline-block;
+}
+
+/* Tooltips */
+.bs-docs-tooltip-examples {
+    text-align: center;
+    margin: 0 0 10px;
+    list-style: none;
+}
+.bs-docs-tooltip-examples li {
+    display: inline;
+    padding: 0 10px;
+}
+
+/* Popovers */
+.jophy-bs-docs-example-popover {
+    padding-bottom: 0px;
+    background-color: #f9f9f9;
+}
+
+.jophy-bs-docs-example-popover-down {
+    padding-bottom: 30px;
+    background-color: #f9f9f9;
+}
+
+
+.jophy-bs-docs-example-popover .popover {
+    position: relative;
+    display: block;
+    float: left;
+    width: 120px;
+    margin: 18px;
+}
+
+/* Dropdowns */
+.jophy-bs-docs-example-submenus {
+    min-height: 180px;
+}
+.jophy-bs-docs-example-submenus > .pull-left + .pull-left {
+    margin-left: 20px;
+}
+.jophy-bs-docs-example-submenus .dropup > .dropdown-menu,
+.jophy-bs-docs-example-submenus .dropdown > .dropdown-menu {
+    display: block;
+    position: static;
+    margin-bottom: 5px;
+    *width: 180px;
+}

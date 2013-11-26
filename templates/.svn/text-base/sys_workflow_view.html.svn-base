@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}{{ config.company }}{% endblock %}
+{% block head %}{{ config.company }}{% endblock %}
+{% block user %}{{ config.user }}{% endblock %}
+
+
+{% block body %}
+{% include "task_left.html" %}
+
+
+
+    <link href="/css/docs.css" rel="stylesheet">
+
+
+
+
+    <div class="span10">
+    <div class="container-fluid">
+    <form class="form-horizontal well" action="" method="post">
+        <fieldset>
+            <legend>项目工作流程</legend>
+            {% autoescape off %}
+                <div class="bs-docs-example" style="background-color: #f5f5f5;">
+                    <input type="text" name="project" class="span3" style="margin: 0 auto;" data-provide="typeahead"
+                           data-items="4"
+                           data-source='{{ data.project }}'/>
+                    <input type="submit" class="btn btn-primary" value="查询"/>
+                </div>
+            {% endautoescape %}
+
+        </fieldset>
+    </form>
+    </div>
+    </div>
+
+
+    {% if project %}
+
+    <div class="span10">
+        <div class="container-fluid">
+            <fieldset>
+                <legend>{{ project }}流程图</legend>
+            </fieldset>
+
+
+        {% for k,v in contents.iteritems %}
+            {% for name, status in v.iteritems %}
+
+        <div class="jophy-bs-docs-example-popover">
+        <div class="popover left">
+            <div class="arrow"></div>
+            <div class="popover-content">
+                {% if status > 0 and status < 101 %}
+                    <p>
+                        <a href="/workflow/approve/{{ project }}/{{ status }}/">{{ name }}</a>
+                    </p>
+                {% else %}
+                    <p>{{ name }}</p>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% if contents %}
+            <div class="jophy-bs-docs-example-popover">
+                <div class="popover">
+                    <div class="arrow"></div>
+                    <div class="popover-content">
+                        <p>上线完成</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+
+
+
+    </div>
+    </div>
+
+
+    <div class="span10">
+        <div class="container-fluid">
+            <fieldset>
+                <legend>有权限的组和人员</legend>
+            </fieldset>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th width="50">ID</th>
+                    <th>审批流程</th>
+                    <th>审批组</th>
+                    <th>审批人员</th>
+                </tr>
+                </thead>
+
+                {% for k, v in result_table.iteritems %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            {% if v.status > 0 and v.status < 100 %}
+                                <td>{{ v.name }}审批</td>
+                            {% else %}
+                                <td>{{ v.name }}</td>
+                            {% endif %}
+                            {% autoescape off %}
+                            <td>{{ v.approve_group }}</td>
+                            <td>{{ v.approve_user }}</td>
+                            {% endautoescape %}
+                        </tr>
+                {% endfor %}
+
+
+
+            </table>
+        {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block foot %}{{ config.company }}{% endblock %}
+
+
+

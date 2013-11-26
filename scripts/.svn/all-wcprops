@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/viprelease/!svn/ver/1352/autorelease/scripts
+END
+monitor_push.sh
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/viprelease/!svn/ver/1139/autorelease/scripts/monitor_push.sh
+END
+truncate_log.sh
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/viprelease/!svn/ver/1352/autorelease/scripts/truncate_log.sh
+END
+log_tail.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/viprelease/!svn/ver/1280/autorelease/scripts/log_tail.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/viprelease/!svn/ver/442/autorelease/scripts/__init__.py
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/viprelease/!svn/ver/1132/autorelease/scripts/test.py
+END
+sync_node.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/viprelease/!svn/ver/1047/autorelease/scripts/sync_node.py
+END
+task_push.sh
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/viprelease/!svn/ver/1138/autorelease/scripts/task_push.sh
+END

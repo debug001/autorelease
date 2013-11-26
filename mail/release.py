@@ -1,0 +1,230 @@
+#encoding=utf-8
+__author__ = 'jophyyao'
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response
+
+sys.path.insert(0, '/data/python/web/autorelease')
+from tools.sendmail import Sendmail
+from workflow.workflow import get_mail_address, get_status_name
+from task.models import Content, History, Validation
+from project.models import Node
+import time, re
+from task.list import percent_string
+
+
+
+def validation_url_return_code(url):
+    import httplib, socket
+    conn=httplib.HTTPConnection(url)
+    try:
+        conn.request('GET','url')
+    except socket.gaierror:
+        return 403
+    result=conn.getresponse()
+    resultStatus=result.status
+    conn.close()
+    return resultStatus
+
+
+def send(request, id, project, status):
+    print id, project, status
+
+    mail_to, mail_cc = [], []
+
+    mailuser = get_mail_address(project, status)
+    #print mailuser
+    if mailuser['to']:
+        for user in mailuser['to']:
+            mail_to.append(user)
+
+    if mailuser['cc']:
+        for user in mailuser['cc']:
+            mail_cc.append(user)
+
+    if mail_to:
+        row = Content.objects.filter(id=id).values()[0]
+
+        #rollback version search
+        if status > 103:
+            row['version'] = History.objects.filter(project=project, env=row['env']).order_by('-finish_time').values()[1]['version']
+
+        status_name = get_status_name(project, status)
+        percent = row['env'],
+
+
+        contents = u"""
+    <html><head>
+    <meta charset="utf-8">
+<style>body{width:600px;margin:1px auto;font-family:'trebuchet MS','Lucida sans',Arial;font-size:14px;color:#444}table{*border-collapse:collapse;border-spacing:0;width:80%}.bordered{border:solid #ccc 1px;-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 1px 1px #ccc;-moz-box-shadow:0 1px 1px #ccc;box-shadow:0 1px 1px #ccc}.bordered tr:hover{background:#fbf8e9;-o-transition:all .1s ease-in-out;-webkit-transition:all .1s ease-in-out;-moz-transition:all .1s ease-in-out;-ms-transition:all .1s ease-in-out;transition:all .1s ease-in-out}.bordered td,.bordered th{border-left:1px solid #ccc;border-top:1px solid #ccc;padding:10px;text-align:left}.bordered th{background-color:#dce9f9;background-image:-webkit-gradient(linear,left top,left bottom,from(#ebf3fc),to(#dce9f9));background-image:-webkit-linear-gradient(top,#ebf3fc,#dce9f9);background-image:-moz-linear-gradient(top,#ebf3fc,#dce9f9);background-image:-ms-linear-gradient(top,#ebf3fc,#dce9f9);background-image:-o-linear-gradient(top,#ebf3fc,#dce9f9);background-image:linear-gradient(top,#ebf3fc,#dce9f9);-webkit-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;-moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;box-shadow:0 1px 0 rgba(255,255,255,.8) inset;border-top:0;text-shadow:0 1px 0 rgba(255,255,255,.5)}.bordered td:first-child,.bordered th:first-child{border-left:none}.bordered th:first-child{-moz-border-radius:6px 0 0 0;-webkit-border-radius:6px 0 0 0;border-radius:6px 0 0 0}.bordered th:last-child{-moz-border-radius:0 6px 0 0;-webkit-border-radius:0 6px 0 0;border-radius:0 6px 0 0}.bordered th:only-child{-moz-border-radius:6px 6px 0 0;-webkit-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0}.bordered tr:last-child td:first-child{-moz-border-radius:0 0 0 6px;-webkit-border-radius:0 0 0 6px;border-radius:0 0 0 6px}.bordered tr:last-child td:last-child{-moz-border-radius:0 0 6px 0;-webkit-border-radius:0 0 6px 0;border-radius:0 0 6px 0}.zebra td,.zebra th{padding:10px;border-bottom:1px solid #f2f2f2}.zebra tbody tr:nth-child(even){background:#f5f5f5;-webkit-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;-moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;box-shadow:0 1px 0 rgba(255,255,255,.8) inset}.zebra th{text-align:left;text-shadow:0 1px 0 rgba(255,255,255,.5);border-bottom:1px solid #ccc;background-color:#eee;background-image:-webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#eee));background-image:-webkit-linear-gradient(top,#f5f5f5,#eee);background-image:-moz-linear-gradient(top,#f5f5f5,#eee);background-image:-ms-linear-gradient(top,#f5f5f5,#eee);background-image:-o-linear-gradient(top,#f5f5f5,#eee);background-image:linear-gradient(top,#f5f5f5,#eee)}.zebra th:first-child{-moz-border-radius:6px 0 0 0;-webkit-border-radius:6px 0 0 0;border-radius:6px 0 0 0}.zebra th:last-child{-moz-border-radius:0 6px 0 0;-webkit-border-radius:0 6px 0 0;border-radius:0 6px 0 0}.zebra th:only-child{-moz-border-radius:6px 6px 0 0;-webkit-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0}.zebra tfoot td{border-bottom:0;border-top:1px solid #fff;background-color:#f1f1f1}.zebra tfoot td:first-child{-moz-border-radius:0 0 0 6px;-webkit-border-radius:0 0 0 6px;border-radius:0 0 0 6px}.zebra tfoot td:last-child{-moz-border-radius:0 0 6px 0;-webkit-border-radius:0 0 6px 0;border-radius:0 0 6px 0}.zebra tfoot td:only-child{-moz-border-radius:0 0 6px 6px;-webkit-border-radius:0 0 6px 6px border-radius:0 0 6px 6px}</style>
+</head>
+<body>
+"""
+
+        contents += u"""
+    <h2>{project} {percent} {status}</h2>
+    <table class="bordered">
+        <tr><td>ID</td><td>{id}</td></tr>
+        <tr><td>项目名称</td><td>{project_sub}</td></tr>
+        <tr><td>版本号</td><td>{version}</td></tr>
+        <tr><td>当前状态</td><td>{status_sub}</td></tr>
+        <tr><td>创建时间</td><td>{create_time}</td></tr>
+        <tr><td>开始发布时间</td><td>{release_starttime}</td></tr>
+        <tr><td>查看上线单</td><td>{link}</td></tr>
+        <tr><td>上线目的</td><td>{comment}</td></tr>
+    </table>
+    """.format(
+            project=project,
+            percent=percent_string(percent[0]),
+            status=status_name,
+            id=row['id'],
+            project_sub=project,
+            version=row['version'],
+            status_sub=status_name,
+            create_time=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(row['create_time']))),
+            release_starttime=time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(row['deploy_time']))),
+            link="http://release.vipshop.com/task/view/%s/" % row['id'],
+            comment=re.sub("\n", "<br>", row['comment']),
+        )
+
+
+
+        #=============================================================
+        #validation
+        if status == 102:
+            time.sleep(30)
+            from lib.common import Common
+            from lib.node import Node as Tnode
+            try:
+                result_row = Validation.objects.filter(project=project).values()[0]
+            except IndexError:
+                result_row = {
+                    "port":""
+                }
+
+            url_result = Common().validation_url(project, percent[0])
+
+            if url_result:
+                contents += u"""
+             <h2>验证部分</h2>
+             <h5>Url<h5>
+             <table class="bordered" style="width:800px">
+             <tr>
+             	  <th>url</th>
+             	  <th>return code</th>
+             </tr>
+             """
+
+                for row in sorted(url_result.iteritems(), key=lambda d:d[0], reverse = False ):
+                    url, return_code = row[0], row[1]
+                    if return_code != 200 and return_code != 302:
+                        url_style = 'style="background:#FF5151;"'
+                    else:
+                        url_style=""
+
+                    contents += u"""
+                    <tr>
+                        <td {url_style}>{url}</td>
+                        <td {code_style}>{return_code}</td>
+                    </tr>
+                    """.format(
+                        url_style = url_style,
+                        url = url,
+                        code_style = url_style,
+                        return_code = return_code,
+                    )
+                contents += u"</table>"
+
+
+            if not url_result and result_row['port']:
+                contents += u"""
+             <h2>验证部分</h2>
+             """
+
+            if result_row['port']:
+                contents += u"""
+            <h5>Port<h5>
+                <table class="bordered" style="width:800px">
+                <tr>
+                    <th>IP</th>
+                    <th>PORT</th>
+                    <th>STATUS</th>
+                </tr>
+                """
+
+                port_status = ""
+                port_style = ""
+                for n in Tnode(project).get():
+                    port_status = Common().validation_port(n['hostname'], result_row['port'])
+
+                    if port_status:
+                        port_style = 'style="background:#FF5151;"'
+                        port_status = "ERROR"
+                    else:
+                        port_style = ""
+                        port_status = "OK"
+
+                    contents += u"""
+                    <tr>
+                        <td {port_style_h}>{host}</td>
+                        <td {port_style_p}>{port}</td>
+                        <td {port_style_s}>{status}</td>
+                    </tr>
+                    """.format(
+                            port_style_h = port_style,
+                            host = n['hostname'],
+                            port_style_p = port_style,
+                            port = result_row['port'],
+                            port_style_s = port_style,
+                            status = port_status,
+                        )
+
+
+                contents += u"</table>"
+
+
+
+
+
+
+
+
+        #===============================================================
+        #server
+        contents += u"""
+    <h2>影响服务器</h2>
+    <table class="bordered" style="width:300px">
+        """
+        for row in Node.objects.filter(project=project).values():
+            if row['name'].startswith("Controltier"):
+                continue
+            contents += """
+            <tr><td>%s</td></tr>
+            """ % row['hostname']
+
+        contents += """
+    </table>
+</body>
+</html>
+        """
+        print contents
+
+        m = Sendmail()
+
+        m.send_mail(
+            mail_to=mail_to,
+            mail_cc=mail_cc,
+            subject=u"自动发布系统 {project} {percent} {status}".format(
+                project=project,
+                percent=percent_string(percent[0]),
+                status=status_name,
+            ).encode("utf-8"),
+            msg=contents,
+        )
+
+    return HttpResponse("")
+
